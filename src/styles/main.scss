@@ -1,0 +1,94 @@
+$palette: (
+  primary: #F5D742,
+  dark-primary: #CFB538,
+  greener-primary: #D6CE3A,
+  primary-text: #212121,
+  secondary-text: #757575,
+  divider: #BDBDBD,
+  add-to-cart: #3CC94F,
+  best-price: #42B9F5
+);
+
+@function color($color-name) {
+  @return map-get($palette, $color-name);
+};
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  background: #EEE;
+}
+
+.header {
+  background: color(primary);
+  padding: 0 15px;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 5px #BDBDBD;
+  z-index: 1;
+
+  & img {
+    height: 70%;
+  }
+
+  .menu {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    & div,
+    & div::before,
+    & div::after {
+      position: absolute;
+      height: 6px;
+      width: 34px;
+      background: color(primary-text);
+      border-radius: 50px;
+      transition: transform .3s;
+    }
+
+    & div::before,
+    & div::after {
+      content: '';
+    }
+
+    & div::before {
+      transform: translateY(-10px);
+    }
+
+    & div::after {
+      transform: translateY(10px);
+    }
+
+    .open-cart & div {
+      background: transparent;
+    }
+
+    .open-cart & div::before {
+      transform: rotate(-45deg);
+    }
+
+    .open-cart & div::after {
+      transform: rotate(45deg);
+    }
+  }
+}
