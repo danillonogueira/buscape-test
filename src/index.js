@@ -1,10 +1,7 @@
 import './styles/main.scss';
+import { $ } from './helpers/Alias';
+import { Controller } from './core/Controller';
 
-const container = document.querySelector('.container');
-const hamburgerMenu = document.querySelector('.menu');
-const hamburgerMenuClick = function(event) {
-  event.preventDefault();
-  container.classList.toggle('open-cart');
-};
+const controller = new Controller();
 
-hamburgerMenu.addEventListener('click', hamburgerMenuClick);
+$('.menu').addEventListener('click', controller.hamburgerMenuClick.bind(controller));
