@@ -8,23 +8,22 @@ export class ProductsView extends View {
           return `
             <div class="product">
               <div class="product__pictures">
-                <img src="${item.product.images[0]}">
-                <img src="${item.product.images[1]}">
-                <img src="${item.product.images[2]}">
-                <img src="${item.product.images[3]}">
+                ${
+                  item.product.images
+                    .map(pic => `<img src="${pic}">`)
+                    .join('')
+                }         
               </div>
               <div class="product__picture">
                 <img src="${item.product.images[0]}">
               </div>         
               <div class="product__info">
-                <div class="product__name">${item.product.name}</div>
+                <span class="product__name">${item.product.name}</span>
                 <div class="product__pricing">
                   <span>melhor preço</span>
-                  <span>
-                    ${item.product.price.installments}x R$${item.product.price.installmentValue}
-                    <button>Adicionar ao carrinho</button>
-                  </span>
-                  <span>ou R$${item.product.price.value}</span>
+                  <span>${item.product.price.installments}x R$${item.product.price.installmentValue}</span>
+                  <button>Adicionar ao carrinho</button>
+                  <span>ou R$${item.product.price.value} à vista</span>
                 </div>
               </div>        
             </div>
@@ -32,6 +31,6 @@ export class ProductsView extends View {
         })
         .join('')
       }
-    `
+    `;
   }
 }

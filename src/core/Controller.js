@@ -8,8 +8,7 @@ export class Controller {
     this.productsView.update();
   }
 
-  hamburgerMenuClick(event) {
-    event.preventDefault();
+  hamburgerMenuClick() {
     this.container.classList.toggle('open-cart');
   }
 }
